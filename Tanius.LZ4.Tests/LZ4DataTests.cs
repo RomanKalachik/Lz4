@@ -12,7 +12,7 @@ namespace Tanius.LZ4.Tests
         [Test]
         public void ReadSample1()
         {
-            var fileName = @"C:\Users\karl\Visual Studio\External Tanius\LZ4\Tanius.LZ4.Tests\Data\test1.pcap.lz4"; // Change based on file structure of local machine
+            var fileName = @"..\..\..\Data\test1.pcap.lz4"; // Change based on file structure of local machine
 
             using (var fr = File.OpenRead(fileName))
             using (var zr = new LZ4Stream(fr, LZ4StreamMode.Decompress))
@@ -24,7 +24,7 @@ namespace Tanius.LZ4.Tests
         [Test]
         public void ReadSample2()
         {
-            var fileName = @"C:\Users\karl\Visual Studio\External Tanius\LZ4\Tanius.LZ4.Tests\Data\test2.pcap.lz4"; // Change based on file structure of local machine
+            var fileName = @"..\..\..\Data\test2.pcap.lz4"; // Change based on file structure of local machine
 
             using (var fr = File.OpenRead(fileName))
             using (var zr = new LZ4Stream(fr, LZ4StreamMode.Decompress))

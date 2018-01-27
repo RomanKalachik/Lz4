@@ -247,7 +247,7 @@ namespace LZ4
                 if (blockInfo != null && blockInfo.ChunkSize <= 0) return false;
                 blockInfo = _formatReader.ReadChunkHeader(_innerStream);
                 int compressedLength = blockInfo.ChunkSize;
-                if (compressedLength <= 0 || compressedLength > GetBuferSize(fileHeaderInfo.FrameDescriptor_BD_BlockMaxSize)) return false;
+                if (compressedLength <= 0 || compressedLength > GetBufferSize(fileHeaderInfo.FrameDescriptor_BD_BlockMaxSize)) return false;
                 bool isCompressed = blockInfo.IsCompressed;
                 var compressed = new byte[compressedLength];
                 var chunk = ReadBlock(compressed, 0, compressedLength);
@@ -259,7 +259,7 @@ namespace LZ4
                 }
                 else
                 {
-                    int bSize = GetBuferSize(fileHeaderInfo.FrameDescriptor_BD_BlockMaxSize);
+                    int bSize = GetBufferSize(fileHeaderInfo.FrameDescriptor_BD_BlockMaxSize);
                     if (_buffer == null)
                         _buffer = new byte[bSize];
                     _bufferLength = LZ4Codec.Decode(compressed, 0, compressedLength, _buffer, 0, bSize, false);
@@ -270,7 +270,7 @@ namespace LZ4
 
             return true;
         }
-        protected int GetBuferSize(BlockMaximumSize blockMaximumSize) {
+        protected int GetBufferSize(BlockMaximumSize blockMaximumSize) {
             switch (blockMaximumSize) {
                 case BlockMaximumSize.Block64K:
                 default:
